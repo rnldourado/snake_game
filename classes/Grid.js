@@ -6,11 +6,11 @@ class Grid {
 
     populate() {
         let gridArray = [];
-        for (let x = 0; x < 10; x++) {
+        for (let x = 0; x < 40; x++) {
             const row = this.createTile('row', x, this.canvas);
             gridArray.push(row);
 
-            for (let y = 0; y < 10; y++) {
+            for (let y = 0; y < 40; y++) {
                 const column = this.createTile('col', y, row);
             }
         }
@@ -26,7 +26,7 @@ class Grid {
         return element
     }
 
-    spawnSnake(snake) {
+    showSnake(snake) {
         snake.body.forEach(([x, y])=>{
             this.gridArray[x].children[y].classList.add('snake');
         })

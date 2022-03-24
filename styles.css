@@ -8,6 +8,9 @@
 body {
     height: 100vh;
     overflow-y: hidden;
+    background: url(https://images.unsplash.com/photo-1647810942742-31e7cfebf70a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #canvas {
@@ -18,10 +21,10 @@ body {
 }
 
 .col {
-    background: rgb(218, 218, 218);
-    width: 60px;
-    height: 60px;
-    border: 1px solid black;
+    background: rgba(218, 218, 218, 0.631);
+    width: 15px;
+    height: 15px;
+    border: 0.05rem solid black;
 }
 
 .snake {
@@ -30,7 +33,7 @@ body {
 
 .row {
     width: 600px;
-    height: 60px;
+    height: 15px;
     display: flex;
     flex-direction: row;
 }

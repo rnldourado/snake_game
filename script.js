@@ -1,5 +1,5 @@
-import { Game } from './Game.js';
-import { Snake } from './Snake.js';
+import { Game } from './classes/Game.js';
+import { Snake } from './classes/Snake.js';
 
 (
     function main() {
@@ -7,6 +7,6 @@ import { Snake } from './Snake.js';
         game.start();
         setInterval(() => {
             game.update()
-        }, 1000);
+        }, 20);
     }
 )()

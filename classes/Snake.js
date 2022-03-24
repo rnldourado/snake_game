@@ -1,26 +1,11 @@
 class Snake {
-    constructor(grid, event) {
+    constructor(grid) {
         this.grid = grid;
-        this.size = 3;
         this.body = this.#populateBody();
-        this.direction = 'R'
+        this.size = 4;
+        this.direction = 'R';
 
-        grid.spawnSnake(this);
-        document.addEventListener('keydown', function (event) {
-            // event.preventDefault()
-            if (event.keyCode == 37) {
-                this.direction = 'L';
-            }
-            else if (event.keyCode == 39) {
-                this.direction = 'R';
-            }
-            else if (event.keyCode == 38) {
-                this.direction = 'U';
-            }
-            else if (event.keyCode == 40) {
-                this.direction = 'D';
-            }
-        });
+        grid.showSnake(this);
     }
 
     #populateBody() {
@@ -37,7 +22,9 @@ class Snake {
     }
 
     move() {
-        let newHead;
+        let newHead
+        let newTail = this.body[this.size - 1]
+        console.log(this.body[0], newTail)
 
         if (this.direction == 'U') {
             newHead = [this.body[0][0] - 1, this.body[0][1]];
@@ -51,22 +38,21 @@ class Snake {
         if (this.direction == 'R') {
             newHead = [this.body[0][0], this.body[0][1] + 1];
         }
-
-        const x = newHead[0]
-        const y = newHead[1]
-
-        const x2 = this.body[this.body.length - 1][0]
-        const y2 = this.body[this.body.length - 1][1]
-
-        for (let i = this.body.length - 1; i > 0; --i) {
+        
+        for (let i = this.size; i > 0; --i) {        // Atualiza o array da cobra
             this.body[i] = this.body[i - 1]
         }
 
         this.body[0] = newHead;
+                    //       x, y        x2, y2 
+        this.updateSnake(...newHead, ...newTail)
+        
+    }
+    
+    updateSnake(x, y, x2, y2) {
 
         this.grid.gridArray[x].children[y].classList.add('snake');
         this.grid.gridArray[x2].children[y2].classList.remove('snake');
-
     }
 }
 
